@@ -1,0 +1,21 @@
+<ng-container *ngIf="stocklist$|async as stocklist; else loading">
+  <table class='table table-striped' aria-labelledby="tableLabel">
+    <thead>
+      <tr>
+        <th>stockID</th>
+        <th>stockName</th>
+        <th>status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let forecast of stocklist">
+        <td>{{ forecast.stockID }}</td>
+        <td>{{ forecast.stockName }}</td>
+        <td>{{ forecast.status }}</td>
+        <td><button class="btn btn-warning">name</button></td>
+      </tr>
+    </tbody>
+  </table>
+</ng-container>
+<ng-template #loading>Loading...</ng-template>
+

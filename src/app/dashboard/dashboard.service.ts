@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-@Injectable({
-  providedIn: 'root',
+import { Stockinfo } from '../ClassModels/Stockinfo';
+import { Observable } from 'rxjs';
 
-})
+
+@Injectable()
 export class DashboardService {
 
   constructor(private http:HttpClient) { }
 
-  getStockInfo(){
-     return this.http.get<any[]>('https://localhost:44318/stockinfo/');
+  getStockInfo():Observable<Stockinfo[]>{
+     return this.http.get<Stockinfo[]>('https://localhost:44318/api/Stockinfo');
   }
 
-  updateStockInfo(updatedata:StockUpdate){
+  updateStockInfo(updatedata:Stockinfo){
     return this.http.put<any[]>('https://localhost:44318/stockinfo/',updatedata);
   }
-}
-
-interface StockUpdate{
-  StockID:string,
-  Status:number
 }

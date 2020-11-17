@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from, Observable, ReplaySubject } from 'rxjs';
 import { DashboardService } from './dashboard.service';
+import { Stockinfo } from '../ClassModels/Stockinfo';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,7 +10,8 @@ import { DashboardService } from './dashboard.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  public stocklist$: Observable<any[]> = new ReplaySubject(1); 
+  public stocklist$: Observable<Stockinfo[]> = new ReplaySubject(1); 
+
   constructor(private service:DashboardService) {
   }
   ngOnInit() {
